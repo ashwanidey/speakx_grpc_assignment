@@ -59,6 +59,7 @@ const requestListener = function (req, res) {
               {
                 query: parsedBody.query,
                 page: parsedBody.page,
+                filterType: parsedBody.filterType,
               },
               (error, news) => {
                 if (error) {
