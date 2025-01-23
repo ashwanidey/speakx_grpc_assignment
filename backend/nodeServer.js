@@ -1,8 +1,10 @@
 const http = require("http");
 const client = require("./client");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const host = "localhost";
-const port = 8000;
+const host = "0.0.0.0";
+const port = process.env.PORT || 8000;
 
 const requestListener = function (req, res) {
   const url = req.url.split("/").splice(1);
