@@ -11,8 +11,10 @@ function App() {
   const [results, setResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [isLoading,setIsLoading] = useState(false);
 
   const handleSearch = async (page = 1) => {
+    setIsLoading(true);
     const response = await fetch('https://speakx-grpc-assignment.onrender.com/search', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -23,6 +25,7 @@ function App() {
     setResults(data.data.questions);
     setTotalPages(data.data.totalPages || 1);
     setCurrentPage(page);
+    setIsLoading(false);
   };
 
   const handlePageChange = (page) => {
@@ -32,6 +35,8 @@ function App() {
   useEffect(() => {
     handleSearch();
   }, [filterType]); 
+
+  
 
   return (
     <div className="">
@@ -66,6 +71,12 @@ function App() {
             </select>
           </div>
 
+          {isLoading ? <div className="p-6 bg-gray-50 min-h-screen">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-2xl font-bold text-gray-800 text-center">Loading...</h1>
+        </div>
+      </div> : 
+        <>
           <div className="results space-y-4">
             {results.length > 0 ? (
               results.map((question, index) => (
@@ -89,8 +100,9 @@ function App() {
               <p className="text-gray-600 text-center">No results found</p>
             )}
           </div>
-
           <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
+          </>  
+}
         </div>
       </div>
     </div>
