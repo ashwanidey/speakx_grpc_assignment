@@ -26,25 +26,7 @@ const requestListener = function (req, res) {
   if (url[0] === "search") {
     switch (method) {
       case "GET":
-        if (url.length > 1 && url[1]) {
-          client.getNews({ id: url[1] }, (error, news) => {
-            if (error) {
-              res.statusCode = 500;
-              res.end(JSON.stringify({ error: error.message }));
-              return;
-            }
-            res.end(JSON.stringify(news));
-          });
-        } else {
-          client.getAllNews({}, (error, news) => {
-            if (error) {
-              res.statusCode = 500;
-              res.end(JSON.stringify({ error: error.message }));
-              return;
-            }
-            res.end(JSON.stringify(news));
-          });
-        }
+       res.end("Alive")
         break;
 
       case "POST":

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import Anagram from '../components/anagram';
-import Mcq from '../components/mcq';
-import Pagination from '../components/Pagination';
+import Anagram from './components/anagram';
+import Mcq from './components/mcq';
+import Pagination from './components/Pagination';
 
 function App() {
   const [query, setQuery] = useState('');
