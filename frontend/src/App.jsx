@@ -15,7 +15,7 @@ function App() {
 
   const handleSearch = async (page = 1) => {
     setIsLoading(true);
-    const response = await fetch('https://speakx-grpc-assignment.onrender.com/search', {
+    const response = await fetch('https://speakx-grpc-assignment-n5p4.onrender.com/search', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query, page, filterType }),
